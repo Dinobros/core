@@ -10,25 +10,29 @@ Desktop.ini
 
 /*.code-workspace
 
-# Downloadable & installable modules & components
-#
-/node_modules/
-
 # Generated & compiled files
 #
 /coverage/
-/dist/
 
 /*.tgz
 
 # Environmental files
 #
 .env
+.gitkeep
 
 # Log files
 #
 *.log
 
-# Not ignored
+# Files with sensitive data
 #
-!.gitkeep
+/.github/
+
+# Config files
+#
+/.editorconfig
+/eslint.config.mjs
+
+/tsconfig.json
+/vite.config.js
