@@ -1,4 +1,4 @@
-import type { GameInitPayload } from "../models/raw-events/types.js";
+import type { GameInitPayload, GameInitPayloadV2 } from "../models/raw-events/types.js";
 
 const VERSIONS = new Map([
     [5, "2000"],
@@ -229,7 +229,7 @@ export function analyzeGameInitPayload(payload: GameInitPayload)
 
     if (("version" in payload) && (payload.version === 2))
     {
-        const { displayMode, maxTouchPoints } = payload;
+        const { displayMode, maxTouchPoints } = payload as GameInitPayloadV2;
 
         if ((browser.context !== "NW.js") && (displayMode === "standalone"))
         {

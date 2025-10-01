@@ -9,7 +9,7 @@ export interface ScreenProperties
     colorDepth: number;
     pixelDepth: number;
 }
-export interface GameInitPayloadV1
+export interface GameInitPayloadV1 extends Payload
 {
     ipAddress: string;
     screen: ScreenProperties;
@@ -27,7 +27,7 @@ export interface GameInitPayloadV2 extends GameInitPayloadV1
 
 export type GameInitPayload = GameInitPayloadV1 | GameInitPayloadV2;
 
-export interface AnswerPayload
+export interface AnswerPayload extends Payload
 {
     questionId: number;
     answerId: number;
