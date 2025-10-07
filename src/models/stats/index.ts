@@ -1,6 +1,13 @@
 import { average, range, sum, zip } from "@byloth/core";
 import type { StatsDataV3 as StatsData } from "./types.js";
 
+const _ratio = (part: number, total: number): number =>
+{
+    if (!(part) || !(total)) { return 0; }
+
+    return part / total;
+};
+
 export function getEmptyStats(key: string): StatsData
 {
     return {
@@ -102,35 +109,27 @@ export const statsAggregator = (_: string, aggregatedStats: StatsData, stats: St
 
     return aggregatedStats;
 };
+
 export const statsRatioComputer = (_: string, stats: StatsData): StatsData =>
 {
-    stats.devices.formFactor.mobile.ratio =
-        stats.devices.total ? stats.devices.formFactor.mobile.total / stats.devices.total : 0;
-    stats.devices.formFactor.tablet.ratio =
-        stats.devices.total ? stats.devices.formFactor.tablet.total / stats.devices.total : 0;
-    stats.devices.formFactor.desktop.ratio =
-        stats.devices.total ? stats.devices.formFactor.desktop.total / stats.devices.total : 0;
+    stats.devices.formFactor.mobile.ratio = _ratio(stats.devices.formFactor.mobile.total, stats.devices.total);
+    stats.devices.formFactor.tablet.ratio = _ratio(stats.devices.formFactor.tablet.total, stats.devices.total);
+    stats.devices.formFactor.desktop.ratio = _ratio(stats.devices.formFactor.desktop.total, stats.devices.total);
 
-    stats.devices.systems.android.ratio =
-        stats.devices.total ? stats.devices.systems.android.total / stats.devices.total : 0;
-    stats.devices.systems.apple.ratio =
-        stats.devices.total ? stats.devices.systems.apple.total / stats.devices.total : 0;
-    stats.devices.systems.windows.ratio =
-        stats.devices.total ? stats.devices.systems.windows.total / stats.devices.total : 0;
+    stats.devices.systems.android.ratio = _ratio(stats.devices.systems.android.total, stats.devices.total);
+    stats.devices.systems.apple.ratio = _ratio(stats.devices.systems.apple.total, stats.devices.total);
+    stats.devices.systems.windows.ratio = _ratio(stats.devices.systems.windows.total, stats.devices.total);
+    stats.devices.systems.others.ratio = _ratio(stats.devices.systems.others.total, stats.devices.total);
 
-    stats.games.ratio =
-        stats.games.new ? stats.games.completed / stats.games.new : 0;
-
-    stats.quizzes.ratio =
-        stats.quizzes.new ? stats.quizzes.completed / stats.quizzes.new : 0;
+    stats.games.ratio = _ratio(stats.games.completed, stats.games.new);
+    stats.quizzes.ratio = _ratio(stats.quizzes.completed, stats.quizzes.new);
 
     for (const answerStats of Object.values(stats.quizzes.questions))
     {
-        answerStats.ratio = answerStats.total ? answerStats.right / answerStats.total : 0;
+        answerStats.ratio = _ratio(answerStats.right, answerStats.total);
     }
 
-    stats.quizzes.answers.ratio =
-        stats.quizzes.answers.total ? stats.quizzes.answers.right / stats.quizzes.answers.total : 0;
+    stats.quizzes.answers.ratio = _ratio(stats.quizzes.answers.right, stats.quizzes.answers.total);
 
     return stats;
 };
