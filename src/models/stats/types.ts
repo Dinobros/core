@@ -1,4 +1,4 @@
-import type { FieldValue, Timestamp } from "@google-cloud/firestore";
+import type { Timestamp } from "@google-cloud/firestore";
 
 export interface RelativeStatsData
 {
@@ -85,7 +85,7 @@ export interface QuizStatsData extends GameStatsData
     questions: Record<number, AnswerStatsData>;
 }
 
-export interface StatsDataV1<T extends Date | FieldValue | Timestamp = Date>
+export interface StatsDataV1<T extends Date | Timestamp = Date>
 {
     date: T;
     users: UserStatsDataV1;
@@ -95,13 +95,13 @@ export interface StatsDataV1<T extends Date | FieldValue | Timestamp = Date>
     quizzes: QuizStatsData;
     events: Record<string, number>;
 }
-export interface StatsDataV2<T extends Date | FieldValue | Timestamp = Date>
+export interface StatsDataV2<T extends Date | Timestamp = Date>
     extends Omit<StatsDataV1<T>, "users" | "devices">
 {
     users: UserStatsDataV2;
     devices: DeviceStatsDataV2;
 }
-export interface StatsDataV3<T extends Date | FieldValue | Timestamp = Date>
+export interface StatsDataV3<T extends Date | Timestamp = Date>
     extends Omit<StatsDataV2<T>, "users" | "devices">
 {
     users: UserStatsDataV2;
@@ -109,5 +109,5 @@ export interface StatsDataV3<T extends Date | FieldValue | Timestamp = Date>
     version: 3;
 }
 
-export type StatsData<T extends Date | FieldValue | Timestamp = Date> =
+export type StatsData<T extends Date | Timestamp = Date> =
     StatsDataV1<T> | StatsDataV2<T> | StatsDataV3<T>;
