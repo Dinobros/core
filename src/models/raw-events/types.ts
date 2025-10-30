@@ -1,4 +1,4 @@
-import type { Timestamp } from "@google-cloud/firestore";
+import type { FieldValue, Timestamp } from "@google-cloud/firestore";
 import type { Payload } from "../../core/types.js";
 
 export interface ScreenProperties
@@ -33,7 +33,7 @@ export interface AnswerPayload extends Payload
     answerId: number;
 }
 
-export type RawEvent<T extends (Date | Timestamp | undefined) = Date, P extends Payload = Payload> = {
+export type RawEvent<T extends (Date | FieldValue | Timestamp | undefined) = Date, P extends Payload = Payload> = {
     type: string;
     payload: P;
     deviceId: string;
