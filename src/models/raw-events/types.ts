@@ -33,7 +33,7 @@ export interface AnswerPayload extends Payload
     answerId: number;
 }
 
-export type RawEvent<P extends Payload = Payload, T extends (Date | Timestamp | undefined) = Date> = {
+export type RawEvent<T extends (Date | Timestamp | undefined) = Date, P extends Payload = Payload> = {
     type: string;
     payload: P;
     deviceId: string;

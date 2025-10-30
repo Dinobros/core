@@ -1,4 +1,4 @@
-export const VERSION = "0.1.3";
+export const VERSION = "0.1.4";
 
 export type { DateTimeFormatStyle, DateTimeFormatOptions, Payload } from "./core/types.js";
 
@@ -6,6 +6,9 @@ export { getEmptyStats, statsAggregator, statsRatioComputer } from "./models/ind
 export type {
     AnswerPayload,
     AnswerStatsData,
+    BestScore,
+    BestScoreV1,
+    BestScoreV2,
     DeviceStatsData,
     DeviceStatsDataV1,
     DeviceStatsDataV2,
@@ -16,8 +19,16 @@ export type {
     GameInitPayloadV1,
     GameInitPayloadV2,
     GameStatsData,
+    Leaderboard,
+    LeaderboardV1,
+    LeaderboardV2,
     QuizStatsData,
+    RankedScoreV1,
+    RankedScoreV2,
     RawEvent,
+    RawScore,
+    RawScoreV1,
+    RawScoreV2,
     RelativeStatsData,
     ScreenProperties,
     SessionsStatsData,
@@ -31,6 +42,8 @@ export type {
     SystemStatsDataV3,
     UserAccount,
     UserProperty,
+    UserScoreV1,
+    UserScoreV2,
     UserStatsData,
     UserStatsDataV1,
     UserStatsDataV2

@@ -1,4 +1,21 @@
 export type {
+    BestScore,
+    BestScoreV1,
+    BestScoreV2,
+    Leaderboard,
+    LeaderboardV1,
+    LeaderboardV2,
+    RankedScoreV1,
+    RankedScoreV2,
+    RawScore,
+    RawScoreV1,
+    RawScoreV2,
+    UserScoreV1,
+    UserScoreV2
+
+} from "./leaderboard/types.js";
+
+export type {
     AnswerPayload,
     DisplayModeType,
     GameInitPayloadV1,
