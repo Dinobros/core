@@ -1,8 +1,8 @@
-export const VERSION = "0.1.5";
+export const VERSION = "0.2.0";
 
 export type { DateTimeFormatStyle, DateTimeFormatOptions, Payload } from "./core/types.js";
 
-export { getEmptyStats, statsAggregator, statsRatioComputer } from "./models/index.js";
+export { Construct3Exception, getEmptyStats, statsAggregator, statsRatioComputer } from "./models/index.js";
 export type {
     AnswerPayload,
     AnswerStatsData,
